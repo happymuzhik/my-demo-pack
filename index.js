@@ -1,15 +1,8 @@
-const spawn = require('child_process').spawn;
+const fs = require('fs');
+const askYesNo = require('cli-interact').getYesNo;
+const initPrDir = require('./src/init-project-dir');
+const log = console.log;
 
-const ls = spawn('ls', ['-lh', '/usr']);
+const DIR_NAME = process.argv[2];
+initPrDir(DIR_NAME);
 
-ls.stdout.on('data', (data) => {
-    console.log(`stdout: ${data}`);
-});
-
-ls.stderr.on('data', (data) => {
-    console.log(`stderr: ${data}`);
-});
-
-ls.on('close', (code) => {
-    console.log(`child process exited with code ${code}`);
-});
