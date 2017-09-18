@@ -1,18 +1,17 @@
 const log = console.log;
 const { spawn } = require('child_process');
 
-module.exports = function(work_dir, params, cb) {
+module.exports = function(work_dir, params) {
 
     const command = /^win/.test(process.platform) ? 'npm.cmd' : 'npm';
 
     const npm = spawn(command, params, {
-        cwd: work_dir
+        cwd: work_dir,
+        stdio: [0]
     });
     
     npm.stdout.on('data', (data) => {
-      if (typeof cb === 'function') {
-        cb(data);
-      }
+      console.log(data.toString());
     });
     
     npm.stderr.on('data', (data) => {
@@ -22,4 +21,6 @@ module.exports = function(work_dir, params, cb) {
     npm.on('exit', (code) => {
       console.log(`npm ${params.join(' ')} exited with code ${code}`);
     });
+
+    return npm;
 }
