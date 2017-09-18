@@ -6,6 +6,7 @@ const initPrDir = require('./src/init-project-dir');
 const createReadme = require('./src/create-readme');
 const createGitIgnore = require('./src/create-gitignore');
 const createSrcDir = require('./src/create-src-dir');
+const createDstDir = require('./src/create-dst-dir');
 const initProject = require('./src/init-project');
 const modifPack = require('./src/modify-packagejson');
 const installPacks = require('./src/install-packgs');
@@ -17,6 +18,7 @@ initPrDir(DIR_NAME);
 createReadme(WORK_DIR, DIR_NAME);
 createGitIgnore(WORK_DIR);
 createSrcDir(WORK_DIR);
+createDstDir(WORK_DIR);
 // initProject(WORK_DIR, function(){
 //     modifPack(WORK_DIR);
 //     installPacks(WORK_DIR, function(){
