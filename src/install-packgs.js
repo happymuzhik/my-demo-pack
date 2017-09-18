@@ -1,11 +1,13 @@
 const spawnNpm = require('./spawn-npm-process');
 
 const global_pkg = [
+    'install',
     '-g',
     'webpack',
     'concurrently'
 ];
 const dev_deps_pkg = [
+    'install',
     '--save-dev',
     'autoprefixer-loader',
     'babel-core',
@@ -21,6 +23,7 @@ const dev_deps_pkg = [
     'concurrently'
 ];
 const dev_pkg = [
+    'install',
     '--save',
     'css-loader',
     'express',
@@ -38,9 +41,23 @@ const dev_pkg = [
 ];
 
 module.exports = function(work_dir, cb) {
-    // const npm = spawnNpm(work_dir, ['init', '-f'], function(){
-
-    // });
-    // const npm = spawnNpm(work_dir, ['init', '-f'], cb);
-    // const npm = spawnNpm(work_dir, ['init', '-f'], cb);
+    spawnNpm(work_dir, global_pkg)
+    .then(
+        () => spawnNpm(work_dir, dev_deps_pkg),
+        (data) => {
+            console.log('ERROR global_pkg !', data);
+        }
+    )
+    .then(
+        () => spawnNpm(work_dir, dev_pkg),
+        (data) => {
+            console.log('ERROR dev_deps_pkg !', data);
+        }
+    )
+    .then(
+        cb,
+        (data) => {
+            console.log('ERROR dev_pkg !', data);
+        }
+    )
 }

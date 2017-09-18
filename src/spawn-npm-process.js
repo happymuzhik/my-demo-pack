@@ -13,7 +13,7 @@ module.exports = function(work_dir, params) {
       });
       
       npm.stdout.on('data', (data) => {
-        console.log(data.toString());
+        log(data.toString());
       });
       
       npm.stderr.on('error', (data) => {
@@ -21,7 +21,7 @@ module.exports = function(work_dir, params) {
       });
       
       npm.on('exit', (code) => {
-        console.log(`npm ${params.join(' ')} exited with code ${code}`);
+        log(`npm ${params.join(' ')} exited with code ${code}`);
         resolve();
       });
 

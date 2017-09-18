@@ -1,5 +1,5 @@
 const fs = require('fs');
-const createFile = require('./create-file');
+const { createFile } = require('./utils-dir-file');
 
 module.exports = function(work_dir) {
     const filename = 'package.json';

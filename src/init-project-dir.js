@@ -1,17 +1,6 @@
 const fs = require('fs');
-const fsx = require('fs-extra')
 const askYesNo = require('cli-interact').getYesNo;
-const log = console.log;
-
-function mkDir(dir_name){
-    fs.mkdirSync(dir_name);
-    log(`dir ${dir_name} created`)
-}
-
-function rmDir(dir_name){
-    fsx.removeSync(dir_name);
-    log(`dir ${dir_name} removed`)
-}
+const { mkDir, rmDir } = require('./utils-dir-file');
 
 module.exports = function(dir_name) {
     if (fs.existsSync(dir_name)) {

@@ -1,4 +1,4 @@
-const createFile = require('./create-file');
+const { createFile } = require('./utils-dir-file');
 
 module.exports = function(work_dir){
     const default_text = 'node_modules';
