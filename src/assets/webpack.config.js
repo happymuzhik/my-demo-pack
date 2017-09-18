@@ -6,8 +6,8 @@ const path = require('path');
 
 const prod_dir = '/dist/web/';
 
-const html_test_dev_dir = './src/html/';
-const html_test_prod_dir = '/dist/web/';
+const html_test_dev_dir = './src/';
+const html_test_prod_dir = '/dist/';
 
 module.exports = {
     entry: {
