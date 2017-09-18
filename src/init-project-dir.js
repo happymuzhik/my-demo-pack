@@ -1,4 +1,5 @@
 const fs = require('fs');
+const fsx = require('fs-extra')
 const askYesNo = require('cli-interact').getYesNo;
 const log = console.log;
 
@@ -8,7 +9,7 @@ function mkDir(dir_name){
 }
 
 function rmDir(dir_name){
-    fs.rmdirSync(dir_name);
+    fsx.removeSync(dir_name);
     log(`dir ${dir_name} removed`)
 }
 
