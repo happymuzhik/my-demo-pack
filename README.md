@@ -5,9 +5,9 @@
 1. ~~Create README.md~~
 1. ~~Create .gitignore~~
 1. ~~Create package.json~~
+1. install npm packages
 1. Create src dir
 1. Create dst dir
-1. install npm packages
 1. manage dst folder
     * public folder
     * assets folder

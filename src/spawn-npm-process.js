@@ -1,29 +1,30 @@
 const log = console.log;
 const { spawn } = require('child_process');
 
-module.exports = function(work_dir, params, cb) {
+module.exports = function(work_dir, params) {
 
-    const command = /^win/.test(process.platform) ? 'npm.cmd' : 'npm';
+    return new Promise(function(resolve, reject){
 
-    const npm = spawn(command, params, {
-        cwd: work_dir,
-        stdio: [0]
-    });
-    
-    npm.stdout.on('data', (data) => {
-      console.log(data.toString());
-    });
-    
-    npm.stderr.on('data', (data) => {
-      console.log(data.toString());
-    });
-    
-    npm.on('exit', (code) => {
-      console.log(`npm ${params.join(' ')} exited with code ${code}`);
-      if (typeof cb === 'function') {
-        cb();
-      }
+      const command = /^win/.test(process.platform) ? 'npm.cmd' : 'npm';
+      
+      const npm = spawn(command, params, {
+          cwd: work_dir,
+          stdio: [0]
+      });
+      
+      npm.stdout.on('data', (data) => {
+        console.log(data.toString());
+      });
+      
+      npm.stderr.on('error', (data) => {
+        reject(data.toString());
+      });
+      
+      npm.on('exit', (code) => {
+        console.log(`npm ${params.join(' ')} exited with code ${code}`);
+        resolve();
+      });
+
     });
 
-    return npm;
 }
