@@ -3,7 +3,7 @@
 1. ~~If YES - remove it~~
 1. ~~Create project dir~~
 1. ~~Create README.md~~
-1. Create .gitignore
+1. ~~Create .gitignore~~
 1. Create package.json
 1. Create src dir
 1. Create dst dir

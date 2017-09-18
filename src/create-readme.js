@@ -1,10 +1,6 @@
-const fs = require('fs');
-const log = console.log;
+const createFile = require('./create-file');
 
 module.exports = function(work_dir, name){
-
     const default_text = '## ' + name.toString().toUpperCase();
-
-    fs.appendFileSync(work_dir + 'README.md', default_text);
-    log('README created');
+    createFile(work_dir, 'README.md', default_text);
 }

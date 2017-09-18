@@ -1,10 +1,6 @@
-const fs = require('fs');
-const log = console.log;
+const createFile = require('./create-file');
 
-module.exports = function(work_dir, name){
-
+module.exports = function(work_dir){
     const default_text = 'node_modules';
-
-    fs.appendFileSync(work_dir + '.gitignore', default_text);
-    log('gitignore created');
+    createFile(work_dir, '.gitignore', default_text);
 }
