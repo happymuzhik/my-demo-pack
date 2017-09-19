@@ -16,16 +16,20 @@ const installPacks = require('./src/install-packgs');
 const DIR_NAME = process.argv[2];
 const WORK_DIR = __dirname + path.sep + DIR_NAME + path.sep;
 
-initPrDir(DIR_NAME);
-createReadme(WORK_DIR, DIR_NAME);
-createGitIgnore(WORK_DIR);
-createSrcDir(WORK_DIR);
-createDstDir(WORK_DIR);
-createWebpackCfg(WORK_DIR);
-createServer(WORK_DIR);
-initProject(WORK_DIR, function(){
-    modifPack(WORK_DIR);
-    installPacks(WORK_DIR, function(){
-        console.log(' Packges installed! ')
+module.exports = function(){
+
+    initPrDir(DIR_NAME);
+    createReadme(WORK_DIR, DIR_NAME);
+    createGitIgnore(WORK_DIR);
+    createSrcDir(WORK_DIR);
+    createDstDir(WORK_DIR);
+    createWebpackCfg(WORK_DIR);
+    createServer(WORK_DIR);
+    initProject(WORK_DIR, function(){
+        modifPack(WORK_DIR);
+        installPacks(WORK_DIR, function(){
+            console.log(' Packges installed! ')
+        });
     });
-});
+
+}
