@@ -13,10 +13,15 @@ const initProject = require('./src/init-project');
 const modifPack = require('./src/modify-packagejson');
 const installPacks = require('./src/install-packgs');
 
-const DIR_NAME = process.argv[2];
-const WORK_DIR = __dirname + path.sep + DIR_NAME + path.sep;
-
 module.exports = function(){
+
+    const DIR_NAME = process.argv[1];
+    const WORK_DIR = __dirname + path.sep + DIR_NAME + path.sep;
+
+    if(!DIR_NAME) {
+        log('project name is required!!!');
+        return false;
+    }
 
     initPrDir(DIR_NAME);
     createReadme(WORK_DIR, DIR_NAME);
