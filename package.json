@@ -7,6 +7,9 @@
   "directories": {
     "bin": "./bin"
   },
+  "bin": {
+    "happy-m-create-react-app": "./bin/happy-m-create-react-app.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
